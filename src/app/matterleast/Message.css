@@ -1,0 +1,15 @@
+.message {
+  margin: 2px;
+  font-size: 16px;
+  line-height: 1.2;
+  color: rgb(120, 122, 131);
+}
+
+.message-group {
+  border-top: 1px solid darkgrey;
+  padding-left: 80px;
+}
+
+.sender-name {
+  color: rgb(64, 67, 79);
+}

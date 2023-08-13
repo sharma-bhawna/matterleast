@@ -14,8 +14,8 @@ const MessageGroup = ({ sender, messages }: MessageGroupProps) => {
   return (
     <section className="message-group">
       <Sender name={sender} />
-      {messages.map((message) => (
-        <Message message={message} />
+      {messages.map((message, index) => (
+        <Message key={`message-${index}`} message={message} />
       ))}
     </section>
   );

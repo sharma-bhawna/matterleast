@@ -1,22 +1,23 @@
 import "./Message.css";
-import Message, { MessageText } from "@/app/matterleast/Message";
+import Messages, { MessageText } from "@/app/matterleast/Message";
 
 interface MessageGroupProps {
   sender: string;
-  messages: Array<MessageText>;
+  messages: MessageText[];
 }
 
 const Sender = ({ name }: { name: string }) => (
-  <h3 className="sender-name">{name}</h3>
+  <header className="profile">
+    <div className="profile-icon">{name[0].toUpperCase()}</div>
+    <h3 className="sender-name">{name}</h3>
+  </header>
 );
 
 const MessageGroup = ({ sender, messages }: MessageGroupProps) => {
   return (
     <section className="message-group">
       <Sender name={sender} />
-      {messages.map((message, index) => (
-        <Message key={`message-${index}`} message={message} />
-      ))}
+      <Messages messages={messages} />
     </section>
   );
 };

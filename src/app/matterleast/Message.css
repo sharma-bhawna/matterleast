@@ -1,3 +1,12 @@
+.message-group {
+  border-top: 1px solid darkgrey;
+  padding-left: 5rem;
+}
+
+.messages {
+  margin-left: 2.4rem;
+}
+
 .message {
   margin: 2px;
   font-size: 16px;
@@ -5,11 +14,24 @@
   color: rgb(120, 122, 131);
 }
 
-.message-group {
-  border-top: 1px solid darkgrey;
-  padding-left: 80px;
+.sender-name {
+  margin: 0;
+  color: rgb(64, 67, 79);
 }
 
-.sender-name {
-  color: rgb(64, 67, 79);
+.profile-icon {
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  background-color: goldenrod;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 2;
+  margin-right: 0.5rem;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  margin-top: 1.8rem;
 }

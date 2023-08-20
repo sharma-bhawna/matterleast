@@ -8,8 +8,13 @@ type SidebarProps = {
 
 const Sidebar = ({ workspace }: SidebarProps) => (
   <aside className="sidebar">
-    <span className="workspace">{workspace}</span>
-    <input placeholder={"search"} />
+    <div className="sidebar-header">
+      <span className="workspace">{workspace}</span>
+      <div className="plus">+</div>
+      <span className="filter">Filter</span>
+      <input placeholder={"search"} className="search" />
+      <span className="threads">Threads</span>
+    </div>
     <nav></nav>
   </aside>
 );

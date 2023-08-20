@@ -3,18 +3,26 @@ body {
 }
 
 .app {
-  display: flex;
-  flex-direction: column;
   width: 100vw;
   height: 100vh;
+  display: grid;
+  grid-template-rows: 5% 95%;
+  grid-template-columns: 16% 84%;
 }
 
 .header {
-  height: 2rem;
-  display: flex;
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  display: inline-grid;
+  grid-template-columns: 33% 34% 33%;
   align-items: center;
-  justify-content: space-between;
+
   background: rgb(23, 33, 60);
   color: rgb(171, 175, 185);
   padding: 0 2rem;
+}
+
+.profile-icon {
+  justify-self: end;
 }

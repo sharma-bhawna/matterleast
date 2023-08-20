@@ -15,7 +15,7 @@
 }
 
 .sender-name {
-  margin: 0;
+  margin: 0 0 0 0.5rem;
   color: rgb(64, 67, 79);
 }
 
@@ -27,7 +27,6 @@
   border-radius: 50%;
   text-align: center;
   line-height: 2;
-  margin-right: 0.5rem;
 }
 
 .profile {

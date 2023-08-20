@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.header {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgb(23, 33, 60);
+  color: rgb(171, 175, 185);
+  padding: 0 2rem;
+}

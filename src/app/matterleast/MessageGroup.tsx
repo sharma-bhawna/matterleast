@@ -6,9 +6,13 @@ interface MessageGroupProps {
   messages: MessageText[];
 }
 
+export const ProfileIcon = ({ name }: { name: string }) => (
+  <div className="profile-icon">{name[0].toUpperCase()}</div>
+);
+
 const Sender = ({ name }: { name: string }) => (
   <header className="profile">
-    <div className="profile-icon">{name[0].toUpperCase()}</div>
+    <ProfileIcon name={name} />
     <h3 className="sender-name">{name}</h3>
   </header>
 );

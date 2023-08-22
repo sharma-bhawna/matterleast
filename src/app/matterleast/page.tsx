@@ -14,7 +14,7 @@ export default function Matterleast() {
         <input placeholder="Search" type="text" />
         <ProfileIcon name={senderName} />
       </header>
-      <Sidebar workspace="Step" channelNames={[]} profileNames={[]} />
+      <Sidebar workspace="Step" />
       <main>
         <MessageGroup sender={senderName} messages={messages} />
         <ChatBox username={senderName} />

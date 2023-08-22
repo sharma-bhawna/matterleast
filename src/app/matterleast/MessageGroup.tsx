@@ -1,9 +1,9 @@
 import "./Message.css";
-import Messages, { MessageText } from "@/app/matterleast/Message";
+import styled from "styled-components";
 
 interface MessageGroupProps {
   sender: string;
-  messages: MessageText[];
+  messages: string[];
 }
 
 export const ProfileIcon = ({ name }: { name: string }) => (
@@ -19,11 +19,32 @@ const Sender = ({ name }: { name: string }) => (
 
 const MessageGroup = ({ sender, messages }: MessageGroupProps) => {
   return (
-    <section className="message-group">
+    <MessagesSection>
       <Sender name={sender} />
-      <Messages messages={messages} />
-    </section>
+      <Messages>
+        {messages.map((message, index) => (
+          <Message key={`message-${index}`}>{message}</Message>
+        ))}
+      </Messages>
+    </MessagesSection>
   );
 };
+
+const MessagesSection = styled.section`
+  border-top: 1px solid darkgrey;
+  padding-left: 5rem;
+  height: 94%;
+`;
+
+const Messages = styled.div`
+  margin-left: 2.4rem;
+`;
+
+export const Message = styled.p`
+  margin: 2px;
+  font-size: 16px;
+  line-height: 1.2;
+  color: rgb(120, 122, 131);
+`;
 
 export default MessageGroup;

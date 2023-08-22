@@ -1,3 +1,4 @@
+"use client";
 import ChatBox from "@/app/matterleast/ChatBox";
 import MessageGroup, { ProfileIcon } from "@/app/matterleast/MessageGroup";
 import Sidebar from "@/app/matterleast/Sidebar";

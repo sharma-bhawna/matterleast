@@ -1,4 +1,3 @@
-import "./Message.css";
 import styled from "styled-components";
 
 interface MessageGroupProps {
@@ -7,14 +6,14 @@ interface MessageGroupProps {
 }
 
 export const ProfileIcon = ({ name }: { name: string }) => (
-  <div className="profile-icon">{name[0].toUpperCase()}</div>
+  <Icon className="profile-icon">{name[0].toUpperCase()}</Icon>
 );
 
 const Sender = ({ name }: { name: string }) => (
-  <header className="profile">
+  <Profile className="profile">
     <ProfileIcon name={name} />
-    <h3 className="sender-name">{name}</h3>
-  </header>
+    <Name className="sender-name">{name}</Name>
+  </Profile>
 );
 
 const MessageGroup = ({ sender, messages }: MessageGroupProps) => {
@@ -45,6 +44,27 @@ export const Message = styled.p`
   font-size: 16px;
   line-height: 1.2;
   color: rgb(120, 122, 131);
+`;
+
+const Profile = styled.header`
+  display: flex;
+  align-items: center;
+  margin-top: 1.8rem;
+`;
+
+const Name = styled.h3`
+  margin: 0 0 0 0.5rem;
+  color: rgb(64, 67, 79);
+`;
+
+const Icon = styled.div`
+  width: 2rem;
+  height: 2rem;
+  color: white;
+  background-color: goldenrod;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 2;
 `;
 
 export default MessageGroup;

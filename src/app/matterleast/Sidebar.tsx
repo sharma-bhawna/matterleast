@@ -1,32 +1,46 @@
 import "./Sidebar.css";
+import styled from "styled-components";
 
 type SidebarProps = {
   workspace: string;
 };
 
 interface ChannelsProps {
+  title: string;
   channels: string[];
-};
-
-const Channels = (channelsProps: ChannelsProps) => {
-  return <section className="channels">
-    <h4>CHANNELS</h4>
-    <div>
-      {...channelsProps.channels.map(channel => {
-        return <p key={channel} className="channel-name">{channel}</p>;
-      })}
-    </div>
-  </section>
 }
 
+const Channels = (channelsProps: ChannelsProps) => {
+  return (
+    <section className="channels">
+      <h5>{channelsProps.title}</h5>
+      <div>
+        {...channelsProps.channels.map((channel) => {
+          return <ChannelName key={channel}>{channel}</ChannelName>;
+        })}
+      </div>
+    </section>
+  );
+};
+
+const ChannelName = styled.p`
+  font-size: 14px;
+  color: rgb(127, 133, 144);
+  margin: 0;
+  padding: 5px 20px;
+  cursor: pointer;
+`;
+
 const channels = [
-  'Off-Topic',
-  'Random',
-  'Townhall',
-  'General',
-  'Sports',
-  'Cricket',
+  "Off-Topic",
+  "Random",
+  "Townhall",
+  "General",
+  "Sports",
+  "Cricket",
 ];
+
+const dms = ["Aftab", "Suman", "Tilak Puli", "Sapana", "Rishabh", "Arnob"];
 
 const Sidebar = ({ workspace }: SidebarProps) => (
   <aside className="sidebar">
@@ -37,8 +51,9 @@ const Sidebar = ({ workspace }: SidebarProps) => (
       <input placeholder={"search"} className="search" />
       <span className="threads">Threads</span>
     </div>
-    <nav>
-      <Channels channels={channels} />
+    <nav className="nav">
+      <Channels title="CHANNELS" channels={channels} />
+      <Channels title="DIRECT MESSAGES" channels={dms} />
     </nav>
   </aside>
 );

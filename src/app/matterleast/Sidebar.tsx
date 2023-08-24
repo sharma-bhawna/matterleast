@@ -1,5 +1,6 @@
 import "./Sidebar.css";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
 
 type SidebarProps = {
   workspace: string;
@@ -31,31 +32,32 @@ const ChannelName = styled.p`
   cursor: pointer;
 `;
 
-const channels = [
-  "Off-Topic",
-  "Random",
-  "Townhall",
-  "General",
-  "Sports",
-  "Cricket",
-];
-
 const dms = ["Aftab", "Suman", "Tilak Puli", "Sapana", "Rishabh", "Arnob"];
 
-const Sidebar = ({ workspace }: SidebarProps) => (
-  <aside className="sidebar">
-    <div className="sidebar-header">
-      <span className="workspace">{workspace}</span>
-      <div className="plus">+</div>
-      <span className="filter">Filter</span>
-      <input placeholder={"search"} className="search" />
-      <span className="threads">Threads</span>
-    </div>
-    <nav className="nav">
-      <Channels title="CHANNELS" channels={channels} />
-      <Channels title="DIRECT MESSAGES" channels={dms} />
-    </nav>
-  </aside>
-);
+const Sidebar = ({ workspace }: SidebarProps) => {
+  const [channels, setChannels] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/channels")
+      .then((res) => res.json())
+      .then((channels) => setChannels(channels));
+  }, []);
+
+  return (
+    <aside className="sidebar">
+      <div className="sidebar-header">
+        <span className="workspace">{workspace}</span>
+        <div className="plus">+</div>
+        <span className="filter">Filter</span>
+        <input placeholder={"search"} className="search" />
+        <span className="threads">Threads</span>
+      </div>
+      <nav className="nav">
+        <Channels title="CHANNELS" channels={channels} />
+        <Channels title="DIRECT MESSAGES" channels={dms} />
+      </nav>
+    </aside>
+  );
+};
 
 export default Sidebar;

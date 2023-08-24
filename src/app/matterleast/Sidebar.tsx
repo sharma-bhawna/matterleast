@@ -32,15 +32,17 @@ const ChannelName = styled.p`
   cursor: pointer;
 `;
 
-const dms = ["Aftab", "Suman", "Tilak Puli", "Sapana", "Rishabh", "Arnob"];
-
 const Sidebar = ({ workspace }: SidebarProps) => {
   const [channels, setChannels] = useState([]);
+  const [messages, setMessages] = useState([]);
 
   useEffect(() => {
     fetch("/api/channels")
       .then((res) => res.json())
       .then((channels) => setChannels(channels));
+    fetch("/api/messages")
+      .then((res) => res.json())
+      .then((messages) => setMessages(messages));
   }, []);
 
   return (
@@ -54,7 +56,7 @@ const Sidebar = ({ workspace }: SidebarProps) => {
       </div>
       <nav className="nav">
         <Channels title="CHANNELS" channels={channels} />
-        <Channels title="DIRECT MESSAGES" channels={dms} />
+        <Channels title="DIRECT MESSAGES" channels={messages} />
       </nav>
     </aside>
   );

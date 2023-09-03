@@ -1,13 +1,33 @@
 import styled from "styled-components";
+import { FormEvent } from "react";
 
 interface ChatBoxProps {
   username: string;
+  sendMessage: (x: string) => void;
 }
 
 const ChatBox = (props: ChatBoxProps) => {
-  const placeholder = `Write to ${props.username}`;
+  const { username, sendMessage } = props;
+  const placeholder = `Write to ${username}`;
 
-  return <ChatBoxInput type="text" placeholder={placeholder} />;
+  const onFormSubmit = (event: FormEvent) => {
+    const form = event.target as HTMLFormElement;
+    event.preventDefault();
+    const { message } = Object.fromEntries(new FormData(form).entries());
+    sendMessage(message as string);
+    form.reset();
+  };
+
+  return (
+    <form action="" onSubmit={onFormSubmit}>
+      <ChatBoxInput
+        placeholder={placeholder}
+        name="message"
+        autoFocus
+        autoComplete="off"
+      />
+    </form>
+  );
 };
 
 const ChatBoxInput = styled.input`

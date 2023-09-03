@@ -3,11 +3,18 @@ import ChatBox from "@/app/matterleast/ChatBox";
 import MessageGroup, { ProfileIcon } from "@/app/matterleast/MessageGroup";
 import Sidebar from "@/app/matterleast/Sidebar";
 import "./Page.css";
+import { useState } from "react";
 
-const messages = ["Hi", "Hello", "I'm James"];
 const senderName = "James";
 
 export default function Matterleast() {
+  const [messages, setMessages] = useState([]);
+
+  const sendMessage = (message: string) => {
+    const latestMessages = messages.concat(message as any);
+    setMessages(latestMessages);
+  };
+
   return (
     <div className="app">
       <header className="header">
@@ -18,7 +25,7 @@ export default function Matterleast() {
       <Sidebar workspace="Step" />
       <main>
         <MessageGroup sender={senderName} messages={messages} />
-        <ChatBox username={senderName} />
+        <ChatBox username={senderName} sendMessage={sendMessage} />
       </main>
     </div>
   );

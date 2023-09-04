@@ -34,15 +34,15 @@ const ChannelName = styled.p`
 
 const Sidebar = ({ workspace }: SidebarProps) => {
   const [channels, setChannels] = useState([]);
-  const [messages, setMessages] = useState([]);
+  const [dms, setDms] = useState([]);
 
   useEffect(() => {
     fetch("/api/channels")
       .then((res) => res.json())
       .then((channels) => setChannels(channels));
-    fetch("/api/messages")
+    fetch("/api/dms")
       .then((res) => res.json())
-      .then((messages) => setMessages(messages));
+      .then((dms) => setDms(dms));
   }, []);
 
   return (
@@ -56,7 +56,7 @@ const Sidebar = ({ workspace }: SidebarProps) => {
       </div>
       <nav className="nav">
         <Channels title="CHANNELS" channels={channels} />
-        <Channels title="DIRECT MESSAGES" channels={messages} />
+        <Channels title="DIRECT MESSAGES" channels={dms} />
       </nav>
     </aside>
   );

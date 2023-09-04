@@ -3,16 +3,26 @@ import ChatBox from "@/app/matterleast/ChatBox";
 import MessageGroup, { ProfileIcon } from "@/app/matterleast/MessageGroup";
 import Sidebar from "@/app/matterleast/Sidebar";
 import "./Page.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const senderName = "James";
 
 export default function Matterleast() {
   const [messages, setMessages] = useState([]);
 
+  useEffect(() => {
+    fetch("/api/messages")
+      .then((res) => res.json())
+      .then((messages) => setMessages(messages));
+  }, []);
+
   const sendMessage = (message: string) => {
-    const latestMessages = messages.concat(message as any);
-    setMessages(latestMessages);
+    fetch("/api/messages", {
+      method: "POST",
+      body: JSON.stringify({ message }),
+    })
+      .then((res) => res.json())
+      .then((messages) => setMessages(messages));
   };
 
   return (

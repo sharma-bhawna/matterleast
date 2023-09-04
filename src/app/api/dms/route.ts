@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function GET(req: Request) {
+export function GET(req: NextRequest) {
   return NextResponse.json([
     "Aftab",
     "Suman",
